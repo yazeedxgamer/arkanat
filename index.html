@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة أركانات للحراسات الامنية - فرع طبرجل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-bg {
+            background-size: cover;
+            background-position: center;
+        }
+        .section-title h4 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1a202c;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-title h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #f59e0b;
+        }
+        .rtl .section-title h4::after {
+            right: 0;
+            left: auto;
+        }
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                 <div class="text-center">
+                    <a href="#" class="main-page-link"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/logo.svg" alt="شعار أركان" class="h-12"></a>
+                    <span class="text-xs text-gray-500 font-semibold block -mt-1">فرع طبرجل</span>
+                </div>
+            </div>
+            <nav class="hidden lg:flex items-center space-x-8 space-x-reverse text-lg font-bold">
+                <a href="#home" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">الرئيسية</a>
+                <a href="#services" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">خدماتنا</a>
+                <a href="#about" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">عن الشركة</a>
+                <a href="#clients" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">العملاء</a>
+                <a href="#career" id="career-link" class="text-gray-700 hover:text-amber-500 transition-colors">التوظيف</a>
+                <a href="#contact" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">اتصل بنا</a>
+            </nav>
+            <div class="hidden lg:flex items-center space-x-4 space-x-reverse">
+                 <a href="#" id="openModal" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+                    اطلب عرض سعر
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-700 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg">
+             <a href="#home" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">الرئيسية</a>
+            <a href="#services" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">خدماتنا</a>
+            <a href="#about" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">عن الشركة</a>
+            <a href="#clients" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">العملاء</a>
+            <a href="#career" id="career-link-mobile" class="block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">التوظيف</a>
+            <a href="#contact" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">اتصل بنا</a>
+            <div class="p-4 border-t">
+                <a href="#" id="openModalMobile" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
+                    اطلب عرض سعر
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <div id="main-page-content">
+        <!-- Hero Section -->
+        <main id="home" class="relative pt-24 h-[60vh] md:h-[80vh] flex items-center justify-center text-white">
+            <div class="absolute inset-0 hero-bg" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://arkanat.com.sa/wp-content/uploads/2024/07/Security-Guard-Training-Fundamentals-Part-1-scaled-1.jpg');"></div>
+            <div class="relative container mx-auto px-6 text-right z-10">
+                <div class="max-w-xl">
+                    <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight animate-fade-in-down">
+                        أمانكم هو<br>مهمتنا الأولى
+                    </h1>
+                </div>
+            </div>
+        </main>
+        
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2">
+                        <div class="section-title text-right"><h4>عن الشركة</h4></div>
+                        <p class="text-lg text-gray-600 leading-loose mb-6">تعتبر شركه أركانات للحراسات الامنية المدنية من اكبر الشركات إنتشاراً على مستوى المملكة حيث انه لدينا فروع في كافة مناطق المملكة لنضمن ان تغطي خدماتنا اكبر مساحة ممكنه ونصل لعملائنا بالمستوى المطلوب من الجودة و نعمل باستمرار على إيجاد وتطوير الفرص الاستثمارية في مجال الخدمات الأمنية.</p>
+                        <ul class="space-y-3 text-lg mb-8">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-amber-500 mt-1 ml-3"></i><span>نقدم مجموعة واسعة من الخدمات الأمنية.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-amber-500 mt-1 ml-3"></i><span>الاعتماد على خبرة واسعة ومعرفة عميقة بمجال الحماية الأمني.</span></li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/i-3.webp" alt="عن الشركة" class="rounded-lg shadow-2xl w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="section-title text-center mx-auto"><h4>خدمات الشركة</h4></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/Patrol-and-Response-Services.jpg" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">المهارات والخدمات الأمنية</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/HardCar-Shoot-_mg_magazine.jpg" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">خدمات نقل الأموال</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
+                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/dogs_11zon-scaled-1.webp" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">وسائل البحث الحيه k9</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section id="clients" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="section-title text-center mx-auto"><h4>عملاؤنا</h4></div>
+                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/gch-logo-1.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/dr_sulaiman_al_habib_hospital_-_logo.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%B4%D8%B1%D9%83%D8%A9_%D9%87%D8%B1%D9%81%D9%8A.svg" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/DGDA-Logo-Ar-removebg-preview.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/351402.svg" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/Extra_Logo.svg.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact" class="bg-gray-800 text-white">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div>
+                        <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/logo.svg" alt="شعار أركان" class="h-12 mb-4"><p class="text-gray-400 mb-4">أمّن اليوم لأجل مستقبل آمن مع مجموعة أركانات للحراسات الأمنية.</p>
+                        <div class="flex space-x-4 space-x-reverse"><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter text-xl"></i></a><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a></div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">خريطة الموقع</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="#home" class="main-page-link hover:text-white">الرئيسية</a></li>
+                            <li><a href="#about" class="main-page-link hover:text-white">عن الشركة</a></li>
+                            <li><a href="#services" class="main-page-link hover:text-white">خدماتنا</a></li>
+                            <li><a href="#career" id="career-link-footer" class="hover:text-white">التوظيف</a></li>
+                            <li><a href="#contact" class="main-page-link hover:text-white">اتصل بنا</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">معلومات التواصل</h4>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 ml-3"></i><span>المملكة العربية السعودية - طبرجل</span></li>
+                            <li class="flex items-start"><i class="fab fa-whatsapp mt-1 ml-3"></i><a href="tel:0503037677" class="hover:text-white">0503037677</a></li>
+                            <li class="flex items-start"><i class="fas fa-envelope mt-1 ml-3"></i><a href="mailto:info@arkanat.com.sa" class="hover:text-white">info@arkanat.com.sa</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-900 py-4"><div class="container mx-auto px-6 text-center text-gray-500"><p>جميع الحقوق محفوظة لدى مجموعة أركانات للحراسات الأمنية - فرع طبرجل 2024</p></div></div>
+        </footer>
+    </div>
+
+    <div id="career-page-content" class="hidden">
+        <!-- Career Breadcrumb -->
+        <div class="pt-24 bg-gray-700 text-white" style="background-image: url('https://arkanat.com.sa/wp-content/uploads/2024/07/bread-bg.png'); background-size: cover; background-position: center;">
+            <div class="bg-black bg-opacity-50 py-12">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-black">التوظيف</h2>
+                    <ol class="flex items-center space-x-2 space-x-reverse text-sm mt-2">
+                        <li><a href="#" class="main-page-link hover:underline">الرئيسية</a></li>
+                        <li><span class="text-gray-400">/</span></li>
+                        <li class="font-semibold">التوظيف</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Main Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Application Form -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">طلب توظيف</h3>
+                        <form class="space-y-5">
+                            <input type="text" placeholder="الاسم" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <input type="email" placeholder="البريد الالكتروني" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <input type="tel" placeholder="الجوال" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <select class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-500">
+                                <option>اختر الوظيفة</option>
+                                <option>موظف استقبال أمني</option>
+                                <option>مراقب كاميرات مراقبة</option>
+                                <option>مساعد إداري</option>
+                            </select>
+                            <input type="number" placeholder="عدد سنوات الخبرة" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            <div>
+                               <label for="cv-upload" class="w-full flex items-center p-4 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
+                                   <i class="fas fa-upload text-gray-500 ml-3"></i>
+                                   <span id="cv-label" class="text-gray-500">ارفق السيرة الذاتية (PDF, DOC, JPG)</span>
+                               </label>
+                               <input id="cv-upload" type="file" class="hidden">
+                            </div>
+                            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-lg py-4 px-6 rounded-lg transition-colors">إرسال</button>
+                        </form>
+                    </div>
+
+                    <!-- Available Jobs Accordion -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">الوظائف المتاحة</h3>
+                        <div id="accordion" class="space-y-4">
+                            <!-- Accordion Item 1 -->
+                            <div class="border border-gray-200 rounded-lg">
+                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
+                                    <span>موظف استقبال أمني</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content px-5 pb-5 text-gray-600">
+                                    <p>يستقبل الزوار، ويؤمن الدخول والخروج، ويوفر المعلومات اللازمة.</p>
+                                </div>
+                            </div>
+                            <!-- Accordion Item 2 -->
+                            <div class="border border-gray-200 rounded-lg">
+                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
+                                    <span>مراقب كاميرات مراقبة</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content px-5 pb-5 text-gray-600">
+                                    <p>يتابع لقطات الكاميرات الأمنية، ويقوم بإبلاغ الفرق عن أي نشاط مشبوه.</p>
+                                </div>
+                            </div>
+                            <!-- Accordion Item 3 -->
+                            <div class="border border-gray-200 rounded-lg">
+                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
+                                    <span>مساعد إداري</span>
+                                    <i class="fas fa-chevron-down transition-transform"></i>
+                                </button>
+                                <div class="accordion-content px-5 pb-5 text-gray-600">
+                                    <p>يدعم العمليات الإدارية اليومية، ويقوم بتنظيم الجداول والمهام.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Shared Components -->
+    <div class="fixed bottom-5 left-5 z-50 space-y-3">
+        <a href="https://api.whatsapp.com/send?phone=966503037677" target="_blank" class="block w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
+        <a href="tel:0503037677" class="block w-14 h-14 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 transition">
+            <i class="fas fa-phone-alt text-2xl"></i>
+        </a>
+    </div>
+
+    <div id="quoteModal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg relative m-4">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-center mb-6">طلب عرض سعر</h3>
+            <form><div class="mb-4"><input type="text" placeholder="الاسم" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><input type="text" placeholder="الشركة" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><input type="tel" placeholder="الجوال" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><select class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-500"><option>-- اختر نوع الخدمة --</option><option>المهارات والخدمات الأمنية</option><option>خدمات نقل الأموال</option><option>وسائل البحث الحيه k9</option><option>تنظيم الحشود</option></select></div><button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg">إرسال</button></form>
+        </div>
+    </div>
+
+    <script>
+        const mainPage = document.getElementById('main-page-content');
+        const careerPage = document.getElementById('career-page-content');
+        
+        const mainPageLinks = document.querySelectorAll('.main-page-link');
+        const careerLinks = document.querySelectorAll('#career-link, #career-link-mobile, #career-link-footer');
+        
+        function showMainPage() {
+            mainPage.classList.remove('hidden');
+            careerPage.classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showCareerPage() {
+            mainPage.classList.add('hidden');
+            careerPage.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        mainPageLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    showMainPage();
+                    // Timeout to allow the page to become visible before scrolling
+                    setTimeout(() => {
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                             targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 100);
+                }
+            });
+        });
+
+        careerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showCareerPage();
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal functionality
+        const quoteModal = document.getElementById('quoteModal');
+        const openModalBtn = document.getElementById('openModal');
+        const openModalMobileBtn = document.getElementById('openModalMobile');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        const openModal = () => quoteModal.classList.replace('hidden', 'flex');
+        const closeModal = () => quoteModal.classList.replace('flex', 'hidden');
+
+        openModalBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+        openModalMobileBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+        closeModalBtn.addEventListener('click', closeModal);
+        quoteModal.addEventListener('click', (e) => { if (e.target === quoteModal) closeModal(); });
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+
+                // Close other accordions
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    if (c !== content && c.style.maxHeight) {
+                        c.style.maxHeight = null;
+                        c.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current accordion
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.classList.remove('rotate-180');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+        
+        // CV Upload Label
+        const cvUpload = document.getElementById('cv-upload');
+        const cvLabel = document.getElementById('cv-label');
+        if(cvUpload) {
+            cvUpload.addEventListener('change', () => {
+                if(cvUpload.files.length > 0) {
+                     cvLabel.textContent = cvUpload.files[0].name;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
