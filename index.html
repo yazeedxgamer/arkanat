@@ -197,6 +197,13 @@
 
         /* --- إعدادات الطباعة (لتقليل الصفحات وإخفاء الزر) --- */
         @media print {
+            /* (هذا هو التعديل البسيط)
+               تحديد هوامش الصفحة الأساسية عند الطباعة لإلغاء أي هوامش افتراضية كبيرة */
+            @page {
+                size: a4;
+                margin: 10mm; /* هامش 1 سم من كل الجهات */
+            }
+
             body {
                 background-color: #ffffff;
                 color: #000000;
@@ -214,9 +221,10 @@
                 width: 100%;
                 max-width: 100%;
                 margin: 0;
-                padding: 10pt; /* هامش طباعة بسيط جداً */
+                padding: 0; /* إزالة الحشو الداخلي للحاوية عند الطباعة */
                 box-shadow: none;
                 border-radius: 0;
+                border: none;
             }
 
             .topic-section {
