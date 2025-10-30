@@ -1,396 +1,453 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجموعة أركانات للحراسات الامنية - فرع طبرجل</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ملخص المادة</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* --- الإعدادات العامة --- */
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            counter-reset: main-section; /* لترقيم الأقسام الرئيسية */
         }
-        .hero-bg {
-            background-size: cover;
-            background-position: center;
+
+        /* --- حاوية المحتوى الرئيسية --- */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
         }
-        .section-title h4 {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #1a202c;
+
+        /* --- الأقسام الرئيسية (المواضيع) --- */
+        .topic-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #fafcfe;
+            transition: all 0.3s ease;
+        }
+
+        .topic-section:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border-color: #c5d9ed;
+        }
+
+        /* --- العناوين --- */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: #004a99; /* لون أزرق داكن رئيسي */
+        }
+
+        /* العنوان الرئيسي للموضوع مع ترقيم تلقائي */
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* إضافة الترقيم التلقائي قبل العنوان الرئيسي */
+        h2::before {
+            counter-increment: main-section;
+            content: counter(main-section) ".";
+            margin-left: 10px;
+            font-size: 1.5rem;
+            color: #0056b3;
+            font-weight: 700;
+        }
+
+        /* العناوين الفرعية */
+        h3 {
+            font-size: 1.4rem;
+            color: #0056b3;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-right: 12px;
+            border-right: 4px solid #007bff; /* تمييز العنوان بخط جانبي */
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* --- الفقرات والنصوص --- */
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- القوائم (التعداد النقطي والرقمي) --- */
+        ul {
+            list-style-type: none; /* إزالة النمط الافتراضي */
+            padding-right: 20px;
+        }
+
+        ul li {
+            font-size: 1.05rem;
             position: relative;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
+            padding-right: 30px;
+            margin-bottom: 12px;
         }
-        .section-title h4::after {
-            content: '';
+
+        /* تصميم علامة التعداد النقطي */
+        ul li::before {
+            content: '•';
             position: absolute;
-            bottom: 0;
             right: 0;
-            width: 80px;
-            height: 4px;
-            background-color: #f59e0b;
+            top: 0;
+            font-size: 1.4rem;
+            color: #007bff; /* لون أزرق مميز */
         }
-        .rtl .section-title h4::after {
+
+        /* تنسيق خاص للقوائم المرقمة (مثل مراحل الإعذار) */
+        .numbered-list {
+            list-style-type: none;
+            padding-right: 0;
+            counter-reset: sub-counter;
+        }
+
+        .numbered-list li {
+            padding-right: 35px;
+        }
+
+        .numbered-list li::before {
+            counter-increment: sub-counter;
+            content: counter(sub-counter) ".";
+            position: absolute;
             right: 0;
-            left: auto;
+            top: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #004a99;
+            background-color: #e6f0ff;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
-        .service-card {
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        /* --- عناصر أخرى --- */
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #d1d9e1;
+            margin: 40px 0;
         }
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        
+        /* ملاحظات الصفحات */
+        .page-ref {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+            display: block;
+            margin-top: -15px;
+            margin-bottom: 20px;
         }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
+
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body>
 
-    <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-sm shadow-md fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                 <div class="text-center">
-                    <a href="#" class="main-page-link"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/logo.svg" alt="شعار أركان" class="h-12"></a>
-                    <span class="text-xs text-gray-500 font-semibold block -mt-1">فرع طبرجل</span>
-                </div>
-            </div>
-            <nav class="hidden lg:flex items-center space-x-8 space-x-reverse text-lg font-bold">
-                <a href="#home" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">الرئيسية</a>
-                <a href="#services" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">خدماتنا</a>
-                <a href="#about" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">عن الشركة</a>
-                <a href="#clients" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">العملاء</a>
-                <a href="#career" id="career-link" class="text-gray-700 hover:text-amber-500 transition-colors">التوظيف</a>
-                <a href="#contact" class="main-page-link text-gray-700 hover:text-amber-500 transition-colors">اتصل بنا</a>
-            </nav>
-            <div class="hidden lg:flex items-center space-x-4 space-x-reverse">
-                 <a href="#" id="openModal" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
-                    اطلب عرض سعر
-                </a>
-            </div>
-            <button id="mobile-menu-button" class="lg:hidden text-gray-700 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-lg">
-             <a href="#home" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">الرئيسية</a>
-            <a href="#services" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">خدماتنا</a>
-            <a href="#about" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">عن الشركة</a>
-            <a href="#clients" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">العملاء</a>
-            <a href="#career" id="career-link-mobile" class="block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">التوظيف</a>
-            <a href="#contact" class="main-page-link block text-center text-gray-700 py-3 px-4 hover:bg-gray-100">اتصل بنا</a>
-            <div class="p-4 border-t">
-                <a href="#" id="openModalMobile" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">
-                    اطلب عرض سعر
-                </a>
-            </div>
-        </div>
-    </header>
-    
-    <div id="main-page-content">
-        <!-- Hero Section -->
-        <main id="home" class="relative pt-24 h-[60vh] md:h-[80vh] flex items-center justify-center text-white">
-            <div class="absolute inset-0 hero-bg" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://arkanat.com.sa/wp-content/uploads/2024/07/Security-Guard-Training-Fundamentals-Part-1-scaled-1.jpg');"></div>
-            <div class="relative container mx-auto px-6 text-right z-10">
-                <div class="max-w-xl">
-                    <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight animate-fade-in-down">
-                        أمانكم هو<br>مهمتنا الأولى
-                    </h1>
-                </div>
-            </div>
-        </main>
-        
-        <!-- About Section -->
-        <section id="about" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="flex flex-col lg:flex-row items-center gap-12">
-                    <div class="lg:w-1/2">
-                        <div class="section-title text-right"><h4>عن الشركة</h4></div>
-                        <p class="text-lg text-gray-600 leading-loose mb-6">تعتبر شركه أركانات للحراسات الامنية المدنية من اكبر الشركات إنتشاراً على مستوى المملكة حيث انه لدينا فروع في كافة مناطق المملكة لنضمن ان تغطي خدماتنا اكبر مساحة ممكنه ونصل لعملائنا بالمستوى المطلوب من الجودة و نعمل باستمرار على إيجاد وتطوير الفرص الاستثمارية في مجال الخدمات الأمنية.</p>
-                        <ul class="space-y-3 text-lg mb-8">
-                            <li class="flex items-start"><i class="fas fa-check-circle text-amber-500 mt-1 ml-3"></i><span>نقدم مجموعة واسعة من الخدمات الأمنية.</span></li>
-                            <li class="flex items-start"><i class="fas fa-check-circle text-amber-500 mt-1 ml-3"></i><span>الاعتماد على خبرة واسعة ومعرفة عميقة بمجال الحماية الأمني.</span></li>
-                        </ul>
-                    </div>
-                    <div class="lg:w-1/2">
-                        <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/i-3.webp" alt="عن الشركة" class="rounded-lg shadow-2xl w-full h-auto">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Services Section -->
-        <section id="services" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="section-title text-center mx-auto"><h4>خدمات الشركة</h4></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/Patrol-and-Response-Services.jpg" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">المهارات والخدمات الأمنية</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/HardCar-Shoot-_mg_magazine.jpg" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">خدمات نقل الأموال</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
-                    <div class="service-card bg-white rounded-lg shadow-md overflow-hidden text-center"><img src="https://arkanat.com.sa/wp-content/uploads/2024/07/dogs_11zon-scaled-1.webp" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">وسائل البحث الحيه k9</h3><a href="#" class="font-semibold text-amber-500 hover:text-amber-600">المزيد <i class="fas fa-arrow-left mr-2"></i></a></div></div>
-                </div>
-            </div>
+    <div class="container">
+
+        <section class="topic-section">
+            <h2>الالتزام الطبيعي وحالاته وآثاره</h2>
+            <span class="page-ref">الصفحات (16-23)</span>
+
+            <h3>ما هو الالتزام الطبيعي؟</h3>
+            <p>الالتزام الطبيعي هو التزام يفتقد العنصر الجبري أو عنصر المسؤولية، فلا يمكن للدائن بمقتضاه إجبار المدين على تنفيذه.</p>
+            <p>وهو واجب أدبي أو خلقي يعترف به القانون، ويقع في منطقة وسط بين دائرة الأخلاق والالتزام المدني، ويؤدي إلى الوفاء به طواعية.</p>
+
+            <h3>حالات الالتزام الطبيعي</h3>
+            <p>يُصنف الالتزام طبيعياً عندما يقوم على أحد العناصر التالية:</p>
+            <ul>
+                <li><strong>1. التزام مدني سابق انقضى لسبب قانوني:</strong> مثل الدين الذي سقط بالتقادم، فإن المدين إذا وفى به طوعاً لا يجوز له استرداده.</li>
+                <li><strong>2. واجب أدبي يرتفع إلى مستوى الواجب المدني:</strong> وهي واجبات أدبية أو أخلاقية يرى المجتمع أنها ترتقي إلى مصاف الالتزامات المدنية.</li>
+            </ul>
+
+            <h3>أمثلة من تطبيقات الالتزام الطبيعي:</h3>
+            <ul>
+                <li>الوصية التي لم تستوف الإجراءات الشكلية تعتبر وصية المدين طبيعياً.</li>
+                <li>دين القمار بين القاصرين: يعتبر التزاماً طبيعياً.</li>
+                <li>تعويض الضرر الذي لا يوجب القانون تعويضه لعدم ثبوت مسؤولية المتسبب.</li>
+                <li>الوفاء بالدين الذي بطلت إجراءات التزامه لسبب أو لآخر.</li>
+            </ul>
+
+            <h3>آثار الالتزام الطبيعي:</h3>
+            <p>يترتب على الالتزام الطبيعي الأثران التاليان:</p>
+            
+            <h4>1. جواز الوفاء بالالتزام الطبيعي (الوفاء طوعاً):</h4>
+            <ul>
+                <li>إذا أدى المدين الالتزام الطبيعي باختياره، فإن الوفاء يكون صحيحاً.</li>
+                <li>لا يجوز للمدين الرجوع عنه واسترداد ما دفعه، لأن الوفاء به يعتبر وفاءً بدين مستحق الأداء من الناحية الأخلاقية.</li>
+            </ul>
+
+            <h4>2. جواز التعهد بوفاء الالتزام الطبيعي:</h4>
+            <ul>
+                <li>يجوز للمدين أن يتعهد بوفاء الالتزام الطبيعي.</li>
+                <li>هذا التعهد ينشئ التزاماً مدنياً جديداً، يمكن للدائن عندئذ أن يُجبر المدين على تنفيذه.</li>
+            </ul>
         </section>
 
-        <!-- Clients Section -->
-        <section id="clients" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="section-title text-center mx-auto"><h4>عملاؤنا</h4></div>
-                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/gch-logo-1.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/dr_sulaiman_al_habib_hospital_-_logo.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%B4%D8%B1%D9%83%D8%A9_%D9%87%D8%B1%D9%81%D9%8A.svg" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/DGDA-Logo-Ar-removebg-preview.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/351402.svg" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                    <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/Extra_Logo.svg.png" alt="Client Logo" class="h-16 mx-auto grayscale hover:grayscale-0 transition duration-300">
-                </div>
-            </div>
+        <hr>
+
+        <section class="topic-section">
+            <h2>أطراف الوفاء وحالاتهم</h2>
+            <span class="page-ref">الصفحات (26-28)</span>
+            <p>أطراف الوفاء هما الموفي (الذي يقوم بالوفاء) والموفى له (الذي يستوفى له الوفاء).</p>
+
+            <h3>أولاً: الموفي (الذي يقوم بالوفاء) - (الصفحات 26-27)</h3>
+            <ul>
+                <li><strong>1. المدين الأصيل:</strong> الأصل أن يقوم المدين بنفسه بالوفاء.</li>
+                <li><strong>2. وكيل المدين أو ممثله القانوني:</strong> إذا كان المدين ناقص الأهلية، يقوم وليه أو وصيه بالوفاء.</li>
+                <li><strong>3. الغير صاحب المصلحة:</strong> يجوز لغير المدين أن يوفي بالدين، مثل الكفيل أو المدين المتضامن، ويكون الوفاء في هذه الحالة ملزماً للدائن.</li>
+                <li><strong>4. الغير غير صاحب المصلحة:</strong> يجوز أيضاً لشخص آخر لا مصلحة له في الوفاء أن يوفي بالدين، ولو كان ذلك دون أمر من المدين. ويجوز للدائن أن يرفض هذا الوفاء إذا اعترض عليه المدين اعتراضاً مبرراً.</li>
+            </ul>
+
+            <h3>ثانياً: الموفى له (الذي يُستوفى له الوفاء) - (الصفحات 27-28):</h3>
+            <ul>
+                <li><strong>1. الدائن الأصيل:</strong> الأصل في الوفاء أن يكون للدائن نفسه.</li>
+                <li><strong>2. نائب الدائن:</strong> يقع الوفاء صحيحاً لوكيله أو وارثه.</li>
+                <li><strong>3. الدائن الظاهر:</strong> يصح الوفاء لشخص ليس هو الدائن الحقيقي إذا كانت هناك قرينة كافية تدل على وجود النيابة الظاهرة أو تثبت صفته في استيفاء الدين.</li>
+            </ul>
+
+            <h3>سؤال جانبي: المراحل التي يمر بها المدين في سداد دينه في حالة رفض الدائن للوفاء (الصفحات 28-31)</h3>
+            <p>إذا رفض الدائن قبول الوفاء، حق للمدين أن يبرئ ذمته عن طريق العرض الحقيقي والإيداع، ويمر بالمراحل التالية:</p>
+            <ul class="numbered-list">
+                <li>
+                    <strong>الإعذار:</strong>
+                    <br>
+                    على المدين أن يُعذر الدائن بواسطة المحضر أو الكاتب العدل يعلن فيه عن استعداده للوفاء ويحدد ميعاداً.
+                    <br>
+                    <strong>الأثر:</strong> يتحمل الدائن تبعة هلاك الشيء أو تلفه، ويتوقف سريان فوائد الدين.
+                </li>
+                <li>
+                    <strong>العرض الحقيقي:</strong>
+                    <br>
+                    بعد الإعذار، يقوم المدين بعرض الدين فعلياً على الدائن في موطنه بواسطة المحضر أو الكاتب العدل.
+                    <br>
+                    إذا رفض الدائن العرض، يكون المدين قد استوفى النتائج المترتبة على العرض وأصبح جاهزاً للإيداع.
+                </li>
+                <li>
+                    <strong>الإيداع:</strong>
+                    <br>
+                    في حالة رفض الدائن للعرض الحقيقي، ينتقل المدين إلى مرحلة الإيداع، حيث يحصل على ترخيص من القضاء لإيداع الشيء المستحق.
+                    <br>
+                    يتم إيداع النقود والأوراق المالية في خزانة المحكمة.
+                </li>
+                <li>
+                    <strong>الحكم بصحة العرض والإيداع:</strong>
+                    <br>
+                    لا تبرأ ذمة المدين بمجرد الإيداع، بل لا بد من صدور حكم قضائي نهائي بصحة العرض والإيداع، وعندئذ يقوم العرض مقام الوفاء ويترتب عليه براءة ذمة المدين.
+                </li>
+            </ul>
         </section>
 
-        <!-- Footer -->
-        <footer id="contact" class="bg-gray-800 text-white">
-            <div class="container mx-auto px-6 py-12">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div>
-                        <img src="https://arkanat.com.sa/wp-content/uploads/2024/07/logo.svg" alt="شعار أركان" class="h-12 mb-4"><p class="text-gray-400 mb-4">أمّن اليوم لأجل مستقبل آمن مع مجموعة أركانات للحراسات الأمنية.</p>
-                        <div class="flex space-x-4 space-x-reverse"><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter text-xl"></i></a><a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a></div>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4">خريطة الموقع</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li><a href="#home" class="main-page-link hover:text-white">الرئيسية</a></li>
-                            <li><a href="#about" class="main-page-link hover:text-white">عن الشركة</a></li>
-                            <li><a href="#services" class="main-page-link hover:text-white">خدماتنا</a></li>
-                            <li><a href="#career" id="career-link-footer" class="hover:text-white">التوظيف</a></li>
-                            <li><a href="#contact" class="main-page-link hover:text-white">اتصل بنا</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-4">معلومات التواصل</h4>
-                        <ul class="space-y-3 text-gray-400">
-                            <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 ml-3"></i><span>المملكة العربية السعودية - طبرجل</span></li>
-                            <li class="flex items-start"><i class="fab fa-whatsapp mt-1 ml-3"></i><a href="tel:0503037677" class="hover:text-white">0503037677</a></li>
-                            <li class="flex items-start"><i class="fas fa-envelope mt-1 ml-3"></i><a href="mailto:info@arkanat.com.sa" class="hover:text-white">info@arkanat.com.sa</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-gray-900 py-4"><div class="container mx-auto px-6 text-center text-gray-500"><p>جميع الحقوق محفوظة لدى مجموعة أركانات للحراسات الأمنية - فرع طبرجل 2024</p></div></div>
-        </footer>
-    </div>
+        <hr>
 
-    <div id="career-page-content" class="hidden">
-        <!-- Career Breadcrumb -->
-        <div class="pt-24 bg-gray-700 text-white" style="background-image: url('https://arkanat.com.sa/wp-content/uploads/2024/07/bread-bg.png'); background-size: cover; background-position: center;">
-            <div class="bg-black bg-opacity-50 py-12">
-                <div class="container mx-auto px-6">
-                    <h2 class="text-4xl font-black">التوظيف</h2>
-                    <ol class="flex items-center space-x-2 space-x-reverse text-sm mt-2">
-                        <li><a href="#" class="main-page-link hover:underline">الرئيسية</a></li>
-                        <li><span class="text-gray-400">/</span></li>
-                        <li class="font-semibold">التوظيف</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <!-- Career Main Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-start">
-                    <!-- Application Form -->
-                    <div>
-                        <h3 class="text-3xl font-bold mb-6">طلب توظيف</h3>
-                        <form class="space-y-5">
-                            <input type="text" placeholder="الاسم" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            <input type="email" placeholder="البريد الالكتروني" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            <input type="tel" placeholder="الجوال" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            <select class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-500">
-                                <option>اختر الوظيفة</option>
-                                <option>موظف استقبال أمني</option>
-                                <option>مراقب كاميرات مراقبة</option>
-                                <option>مساعد إداري</option>
-                            </select>
-                            <input type="number" placeholder="عدد سنوات الخبرة" class="w-full p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            <div>
-                               <label for="cv-upload" class="w-full flex items-center p-4 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-50">
-                                   <i class="fas fa-upload text-gray-500 ml-3"></i>
-                                   <span id="cv-label" class="text-gray-500">ارفق السيرة الذاتية (PDF, DOC, JPG)</span>
-                               </label>
-                               <input id="cv-upload" type="file" class="hidden">
-                            </div>
-                            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-lg py-4 px-6 rounded-lg transition-colors">إرسال</button>
-                        </form>
-                    </div>
-
-                    <!-- Available Jobs Accordion -->
-                    <div>
-                        <h3 class="text-3xl font-bold mb-6">الوظائف المتاحة</h3>
-                        <div id="accordion" class="space-y-4">
-                            <!-- Accordion Item 1 -->
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
-                                    <span>موظف استقبال أمني</span>
-                                    <i class="fas fa-chevron-down transition-transform"></i>
-                                </button>
-                                <div class="accordion-content px-5 pb-5 text-gray-600">
-                                    <p>يستقبل الزوار، ويؤمن الدخول والخروج، ويوفر المعلومات اللازمة.</p>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
-                                    <span>مراقب كاميرات مراقبة</span>
-                                    <i class="fas fa-chevron-down transition-transform"></i>
-                                </button>
-                                <div class="accordion-content px-5 pb-5 text-gray-600">
-                                    <p>يتابع لقطات الكاميرات الأمنية، ويقوم بإبلاغ الفرق عن أي نشاط مشبوه.</p>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 3 -->
-                            <div class="border border-gray-200 rounded-lg">
-                                <button class="accordion-header w-full flex justify-between items-center p-5 text-right font-semibold">
-                                    <span>مساعد إداري</span>
-                                    <i class="fas fa-chevron-down transition-transform"></i>
-                                </button>
-                                <div class="accordion-content px-5 pb-5 text-gray-600">
-                                    <p>يدعم العمليات الإدارية اليومية، ويقوم بتنظيم الجداول والمهام.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="topic-section">
+            <h2>الأسباب الذي ينقضي فيها الوفاء بما يعادل الوفاء)</h2>
+            <span class="page-ref">(الصفحات 39-57)</span>
+            <p>ينقضي الالتزام بما يعادل الوفاء عن طريق عدة أسباب تؤدي إلى براءة ذمة المدين دون الوفاء بذات الشيء الملتزم به وهذه الأسباب هي:</p>
+            <ul>
+                <li><strong>1. الوفاء الإعتياضي (الوفاء بمقابل):</strong> هو اتفاق يقبل بموجبه الدائن أن يستوفي حقه شيئاً آخر غير المستحق أصلاً، وهو ما يترتب عليه انقضاء الدين وبراءة ذمة المدين.</li>
+                <li><strong>2. المقاصة:</strong> انقضاء دينين متقابلين بين شخصين كل منهما دائن ومدين للآخر بقدر الأقل منهما. وهي وسيلة سلبية لتسوية الديون المتقابلة.</li>
+                <li><strong>3. اتحاد الذمتين:</strong> اجتماع صفتي الدائن والمدين في شخص واحد بالنسبة لذات الدين، والسبب الأكثر شيوعاً هو الوراثة. وينقضي الالتزام بقدر ما اتحدت فيه الذمتان.</li>
+                <li><strong>4. التجديد:</strong> استبدال التزام قديم بآخر جديد يؤدي إلى انقضاء الالتزام القديم بضماناته ونشأة التزام جديد يحل محله.</li>
+                <li><strong>5. الإنابة في الوفاء:</strong> اتفاق يتعهد فيه شخص أجنبي (المناب) بوفاء دين المدين (المنيب) للدائن (المناب لديه).</li>
+            </ul>
         </section>
-        
-    </div>
 
-    <!-- Shared Components -->
-    <div class="fixed bottom-5 left-5 z-50 space-y-3">
-        <a href="https://api.whatsapp.com/send?phone=966503037677" target="_blank" class="block w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition">
-            <i class="fab fa-whatsapp text-3xl"></i>
-        </a>
-        <a href="tel:0503037677" class="block w-14 h-14 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 transition">
-            <i class="fas fa-phone-alt text-2xl"></i>
-        </a>
-    </div>
+        <hr>
 
-    <div id="quoteModal" class="fixed inset-0 bg-black bg-opacity-50 z-[100] hidden items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg relative m-4">
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
-            <h3 class="text-2xl font-bold text-center mb-6">طلب عرض سعر</h3>
-            <form><div class="mb-4"><input type="text" placeholder="الاسم" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><input type="text" placeholder="الشركة" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><input type="tel" placeholder="الجوال" class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"></div><div class="mb-4"><select class="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-500"><option>-- اختر نوع الخدمة --</option><option>المهارات والخدمات الأمنية</option><option>خدمات نقل الأموال</option><option>وسائل البحث الحيه k9</option><option>تنظيم الحشود</option></select></div><button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg">إرسال</button></form>
-        </div>
-    </div>
+        <section class="topic-section">
+            <h2>شروط التنفيذ العيني الجبري وكيفية التنفيذ</h2>
+            <span class="page-ref">الصفحات (69-75)</span>
+            <p>التنفيذ العيني الجبري هو الأصل، ويتم فيه إجبار المدين على تنفيذ ذات الالتزام الذي تعهد به.</p>
 
-    <script>
-        const mainPage = document.getElementById('main-page-content');
-        const careerPage = document.getElementById('career-page-content');
-        
-        const mainPageLinks = document.querySelectorAll('.main-page-link');
-        const careerLinks = document.querySelectorAll('#career-link, #career-link-mobile, #career-link-footer');
-        
-        function showMainPage() {
-            mainPage.classList.remove('hidden');
-            careerPage.classList.add('hidden');
-            window.scrollTo(0, 0);
-        }
+            <h3>شروط التنفيذ العيني الجبري</h3>
+            <p>لكي يتمكن الدائن من طلب التنفيذ العيني، يجب أن تتوفر الشروط التالية:</p>
+            <ul>
+                <li>
+                    <strong>1. أن يكون التنفيذ العيني ممكناً:</strong>
+                    <ul>
+                        <li>يجب أن تكون الاستحالة سبباً أجنبياً أو كانت بخطأ من المدين.</li>
+                        <li>إذا أصبحت الاستحالة لاحقة لحكم القاضي بالتنفيذ، فإنها لا تمنع من تنفيذ الحكم عبر الحصول على التعويض المالي، ما دامت الاستحالة لا تعود إلى سبب أجنبي.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>2. ألا يكون التنفيذ العيني مرهقاً للمدين:</strong>
+                    <ul>
+                        <li>يكون التنفيذ مرهقاً إذا كان ممكناً ولكنه يلحق بالمدين ضرراً جسيماً.</li>
+                        <li>إذا كان التنفيذ العيني مرهقاً، جاز للقاضي أن يكتفي بالتعويض بدلاً من التنفيذ العيني. ويُستثنى من ذلك إذا كان الدائن سيصاب بضرر جسيم.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>3. ألا يمس التنفيذ حرية المدين الشخصية:</strong>
+                    <ul>
+                        <li>يشترط عدم اللجوء إلى التنفيذ العيني الجبري إذا كان الالتزام يتطلب تدخلاً شخصياً من المدين (كالتزام رسام أو مهندس بتقديم عمل شخصي)، خوفاً من مصادرة حريته الشخصية.</li>
+                        <li>في هذه الحالة، يقتصر حق الدائن على التعويض.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>4. إعذار المدين:</strong>
+                    <ul>
+                        <li>يجب على الدائن أن يقوم بإعذار المدين (توجيه إنذار رسمي أو ما يعادله) قبل طلب التنفيذ الجبري، وذلك لوضع المدين في حالة المتأخر، وكي لا يكون التنفيذ جبراً بغير حاجة.</li>
+                    </ul>
+                </li>
+            </ul>
 
-        function showCareerPage() {
-            mainPage.classList.add('hidden');
-            careerPage.classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
+            <h3>كيفية التنفيذ العيني (صور التنفيذ)</h3>
+            <span class="page-ref">(الصفحات (70-75)</span>
+            <p>تختلف كيفية التنفيذ العيني حسب طبيعة الالتزام (محل الالتزام)</p>
+            <p>تختلف كيفية التنفيذ العيني الجبري (أي تنفيذ ذات الالتزام) حسب طبيعة محل الالتزام:</p>
 
-        mainPageLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const targetId = link.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    e.preventDefault();
-                    showMainPage();
-                    // Timeout to allow the page to become visible before scrolling
-                    setTimeout(() => {
-                        const targetElement = document.querySelector(targetId);
-                        if(targetElement) {
-                             targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }, 100);
-                }
-            });
-        });
+            <h4>1. التزام بنقل ملكية أو حق عيني آخر:</h4>
+            <ul>
+                <li>بالنسبة لشيء معين بالذات (منقول أو عقار): تنتقل الملكية بمجرد انعقاد العقد.</li>
+                <li>يكفي لتنفيذها ضد المدين، ولجعلها نافذة في مواجهة الغير، اتباع الإجراءات القانونية اللازمة (مثل التسجيل في السجلات الرسمية كدائرة الأراضي للعقارات).</li>
+            </ul>
 
-        careerLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                showCareerPage();
-            });
-        });
+            <h4>2. التزام بعمل:</h4>
+            <ul>
+                <li><strong>التنفيذ بواسطة المدين:</strong> إذا كان الالتزام يتطلب تدخلاً شخصياً من المدين (كالتزام فنان أو طبيب)، يُجبر الدائن المدين على التنفيذ بوسائل غير مباشرة، كالغرامة التهديدية، لتشجيعه على الوفاء الطوعي بالالتزام.</li>
+                <li><strong>التنفيذ بواسطة الغير:</strong> إذا لم يكن تدخل المدين ضرورياً، جاز للدائن أن يحصل على ترخيص من القضاء للقيام بالعمل بنفسه أو بواسطة غيره على نفقة المدين.</li>
+            </ul>
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+            <h4>3. التزام بالامتناع عن عمل:</h4>
+            <ul>
+                <li>إذا خالف المدين التزامه وقام بالعمل الممنوع، جاز للدائن طلب إزالة ما وقع مخالفاً لذلك.</li>
+                <li>وله أن يحصل على ترخيص قضائي للقيام بالإزالة بنفسه أو بواسطة الغير على نفقة المدين.</li>
+            </ul>
+        </section>
 
-        // Modal functionality
-        const quoteModal = document.getElementById('quoteModal');
-        const openModalBtn = document.getElementById('openModal');
-        const openModalMobileBtn = document.getElementById('openModalMobile');
-        const closeModalBtn = document.getElementById('closeModal');
+        <hr>
 
-        const openModal = () => quoteModal.classList.replace('hidden', 'flex');
-        const closeModal = () => quoteModal.classList.replace('flex', 'hidden');
+        <section class="topic-section">
+            <h2>الغرامة التهديدية وشروطها</h2>
+            <span class="page-ref">الصفحات (64-67)</span>
 
-        openModalBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
-        openModalMobileBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
-        closeModalBtn.addEventListener('click', closeModal);
-        quoteModal.addEventListener('click', (e) => { if (e.target === quoteModal) closeModal(); });
+            <h3>ما المقصود بالغرامة التهديدية؟</h3>
+            <p>الغرامة التهديدية هي وسيلة إجبار غير مباشرة يلجأ إليها القاضي لإكراه المدين الممتنع عن تنفيذ التزامه العيني.</p>
+            <ul>
+                <li>هي مبلغ مالي يفرض على المدين عن كل فترة تأخير (يوم، أسبوع، شهر) أو عن كل مرة يمتنع فيها عن التنفيذ.</li>
+                <li>لا تعتبر الغرامة التهديدية تعويضاً نهائياً، بل هي مجرد ضغط نفسي لإجبار المدين على التنفيذ الطوعي، ويحتفظ القاضي بسلطة تصفيتها النهائية.</li>
+            </ul>
 
-        // Accordion functionality
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const icon = header.querySelector('i');
+            <h3>شروط الحكم بالغرامة التهديدية</h3>
+            <p>يشترط للحكم بالغرامة التهديدية توفر ما يلي:</p>
+            <ul>
+                <li>
+                    <strong>1. أن يكون التنفيذ العيني ممكناً عيناً:</strong>
+                    <ul>
+                        <li>يجب أن يكون التنفيذ العيني ما يزال ممكناً، حيث أن الغرامة هي وسيلة إجبار على التنفيذ لا بديل عنه.</li>
+                        <li>إذا أصبحت الاستحالة لاحقة، فإن الدائن لا يرجع إلى الغرامة بل إلى التعويض.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>2. أن يكون التنفيذ العيني يقتضي تدخلاً شخصياً من المدين:</strong>
+                    <ul>
+                        <li>يجب أن يكون الالتزام يتطلب تدخل المدين الشخصي (كفنان أو جراح)، أو التزاماً بالامتناع عن عمل، لأن هذا التدخل هو ما يتم الإكراه عليه.</li>
+                        <li>إذا كان يمكن للدائن أن يستوفي حقه عن طريق التنفيذ على أموال المدين أو بواسطة الغير، فلا حاجة للغرامة التهديدية.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>3. أن يلحق الدائن بالطلب (أو يطالب بها):</strong>
+                    <ul>
+                        <li>لا يجوز للقاضي أن يقضي بها من تلقاء نفسه، بل يجب أن يطالب بها الدائن.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-                // Close other accordions
-                document.querySelectorAll('.accordion-content').forEach(c => {
-                    if (c !== content && c.style.maxHeight) {
-                        c.style.maxHeight = null;
-                        c.previousElementSibling.querySelector('i').classList.remove('rotate-180');
-                    }
-                });
-                
-                // Toggle current accordion
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    icon.classList.remove('rotate-180');
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    icon.classList.add('rotate-180');
-                }
-            });
-        });
-        
-        // CV Upload Label
-        const cvUpload = document.getElementById('cv-upload');
-        const cvLabel = document.getElementById('cv-label');
-        if(cvUpload) {
-            cvUpload.addEventListener('change', () => {
-                if(cvUpload.files.length > 0) {
-                     cvLabel.textContent = cvUpload.files[0].name;
-                }
-            });
-        }
-    </script>
-</body>
+        <hr>
+
+        <section class="topic-section">
+            <h2>التنفيذ عن طريق التعويض المفهوم، الأنواع الشروط، وكيفية التقدير</h2>
+            <span class="page-ref">(الصفحات (79-86)</span>
+
+            <h3>مفهوم التنفيذ عن طريق التعويض</h3>
+            <p>التنفيذ عن طريق التعويض هو البديل الذي يلجأ إليه الدائن عندما يصبح التنفيذ العيني (تنفيذ ذات الشيء الملتزم به) غير ممكن.</p>
+            <p>وهو عبارة عن مبلغ من النقود يدفعه المدين للدائن لتعويض الضرر الذي أصابه من جراء إخلال المدين بالتزامه.</p>
+
+            <h3>أنواع التعويض (الصفحة 79)</h3>
+            <p>ينقسم التعويض إلى نوعين رئيسيين:</p>
+            <ul>
+                <li><strong>1. تعويض عن عدم التنفيذ:</strong> وهو التعويض الذي يحل محل التنفيذ العيني، ويُستحق عندما لا يقوم المدين بتنفيذ التزامه (أو جزء منه).</li>
+                <li><strong>2. تعويض عن التأخير:</strong> وهو التعويض الذي يُستحق إلى جانب التنفيذ العيني، ويهدف إلى تعويض الدائن عن الضرر الذي لحقه نتيجة تأخر المدين في تنفيذ الالتزام.</li>
+            </ul>
+
+            <h3>شروط استحقاق التعويض (الصفحات 80-82)</h3>
+            <p>لا يستحق الدائن التعويض إلا إذا توفرت ثلاثة شروط أساسية:</p>
+            <ul>
+                <li>
+                    <strong>1. الضرر:</strong>
+                    <ul>
+                        <li>يجب أن يكون هناك ضرر أصاب الدائن سواء كان ضرراً مادياً (مالياً) أو أدبياً (غير مالي).</li>
+                        <li>يجب أن يكون الضرر محققاً (وقع فعلاً أو سيقع في المستقبل على وجه اليقين).</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>2. الخطأ:</strong>
+                    <ul>
+                        <li>الأصل أن يُشترط خطأ المدين وهو عدم قيامه بتنفيذ التزامه ما لم يكن الالتزام طبيعته تقتضي تحقيق غاية أو بذل عناية.</li>
+                        <li>إذا كان الالتزام بتحقيق غاية، فيكفي عدم تحققها لإثبات الخطأ. أما إذا كان ببذل عناية، فيجب على الدائن إثبات عدم بذل المدين للعناية الكافية.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>3. علاقة السببية:</strong>
+                    <ul>
+                        <li>يجب أن تكون هناك علاقة مباشرة بين خطأ المدين (عدم تنفيذه أو تأخره) والضرر الذي أصاب الدائن.</li>
+                        <li>إذا كان الضرر ناتجاً عن سبب أجنبي (قوة قاهرة، خطأ الدائن، خطأ الغير)، انقطعت علاقة السببية ولم يستحق الدائن تعويضاً.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>كيفية تقدير التعويض (الصفحات 83-86)</h3>
+            <p>يُحدد مقدار التعويض بإحدى الطرق الثلاث التالية:</p>
+            <ul>
+                <li>
+                    <strong>1. الاتفاق (الشرط الجزائي):</strong>
+                    <ul>
+                        <li>يقوم المتعاقدان بتحديد قيمة التعويض مقدماً في العقد نفسه، ويُسمى الشرط الجزائي.</li>
+                        <li><strong>الأثر:</strong> إذا حلّ أجل الالتزام، التزم المدين بدفع المبلغ المتفق عليه في الشرط الجزائي بدلاً من التعويض الذي يقرره القاضي.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>2. القانون (الفوائد):</strong>
+                    <ul>
+                        <li>إذا كان محل الالتزام مبلغاً من النقود معلوم المقدار، فإن التعويض عن التأخير يُحدد بقوة القانون في صورة فوائد قانونية.</li>
+                        <li>لا يشترط في هذه الحالة إثبات الضرر، ويكفي تأخر المدين في السداد بعد إعذاره.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>3. القضاء (التعويض القضائي):</strong>
+                    <ul>
+                        <li>يُعد هذا هو الأصل العام في تقدير التعويض.</li>
+                        <li>يقوم القاضي بتقدير التعويض اللازم لتغطية الضرر الذي أصاب الدائن فعلاً، ويجب على القاضي أن يُراعي في تقديره مبدأ "جبر الضرر كاملاً"، ويقدره وقت صدور الحكم.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+    </div> </body>
 </html>
