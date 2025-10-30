@@ -3,106 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملخص المادة (نسخة PDF)</title>
+    <title>ملخص المادة</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5MLoDlKxKnC/jE2fY5X//MYSPYCTSECwUJckM5fSfZlfeUeM/qN83jOiiDfbXn3F2qD/gEYLg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
-        /* --- الإعدادات العامة --- */
+        /* --- الإعدادات العامة والتنسيق الاحترافي --- */
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #ffffff; /* خلفية بيضاء للطباعة */
-            color: #000000; /* لون أسود للنص */
-            line-height: 1.6; /* تقليل ارتفاع السطر قليلاً */
+            font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
+            background-color: #f8f9fa; /* خلفية رمادية فاتحة جداً */
+            color: #212529; /* لون نص داكن وواضح */
+            line-height: 1.7;
             margin: 0;
             padding: 0;
+            padding-bottom: 80px; /* لإعطاء مساحة من الزر الثابت */
         }
 
         /* --- حاوية المحتوى الرئيسية --- */
         .container {
-            max-width: 100%; /* عرض كامل ليناسب الطباعة */
-            margin: 0 auto;
-            padding: 15px; /* تقليل الحشو */
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
             background-color: #ffffff;
-            box-shadow: none; /* إزالة الظل */
-        }
-
-        /* --- الأقسام الرئيسية (المواضيع) --- */
-        .topic-section {
-            margin-bottom: 20px; /* تقليل الهامش السفلي */
-            padding: 15px; /* تقليل الحشو */
-            border: 1px solid #ccc; /* إبقاء حد بسيط للتوضيح */
             border-radius: 8px;
-            background-color: #ffffff;
-            page-break-inside: avoid; /* محاولة منع كسر القسم بين صفحتين */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* ظل خفيف جداً */
         }
 
-        /* إزالة تأثيرات التمرير */
-        .topic-section:hover {
-            box-shadow: none;
-            border-color: #ccc;
+        /* --- تنسيق الأقسام (بدون إطار) --- */
+        .topic-section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            page-break-inside: avoid; /* محاولة منع كسر القسم عند الطباعة */
+        }
+
+        /* --- خط فاصل أنيق بين الأقسام --- */
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background-color: #dee2e6; /* لون رمادي خفيف */
+            margin: 30px 0;
+        }
+        /* إخفاء آخر خط فاصل */
+        .topic-section:last-of-type + .section-divider {
+            display: none;
         }
 
         /* --- العناوين --- */
-        h1, h2, h3, h4 {
+        h2, h3, h4 {
             font-weight: 700;
-            color: #000000; /* لون أسود داكن للطباعة */
-            margin-top: 15px; /* تقليل الهوامش */
-            margin-bottom: 10px;
+            color: #003366; /* لون أزرق داكن (احترافي) */
+            margin-top: 10px;
+            margin-bottom: 15px;
         }
 
-        /* العنوان الرئيسي للموضوع مع ترقيم تلقائي */
+        /* العنوان الرئيسي للموضوع (H2) */
         h2 {
-            font-size: 1.6rem; /* تصغير طفيف */
-            border-bottom: 2px solid #000000;
-            padding-bottom: 8px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #0056b3; /* خط سفلي واضح */
+            padding-bottom: 10px;
             display: flex;
             align-items: center;
         }
 
-        /* إضافة الترقيم التلقائي قبل العنوان الرئيسي */
+        /* الترقيم التلقائي للعناوين الرئيسية */
         h2::before {
             counter-increment: main-section;
             content: counter(main-section) ".";
-            margin-left: 10px;
-            font-size: 1.4rem; /* تصغير طفيف */
-            color: #000000;
+            margin-left: 12px;
+            font-size: 1.6rem;
+            color: #0056b3;
             font-weight: 700;
         }
+        body { counter-reset: main-section; } /* بدء العداد */
 
-        /* العناوين الفرعية */
+        /* العنوان الفرعي (H3) */
         h3 {
-            font-size: 1.3rem; /* تصغير طفيف */
-            color: #000000;
-            padding-right: 10px;
-            border-right: 3px solid #000000; /* تمييز العنوان بخط جانبي */
+            font-size: 1.4rem;
+            color: #0056b3; /* لون أزرق أفتح قليلاً */
+            padding-right: 14px;
+            border-right: 4px solid #007bff;
         }
 
+        /* العنوان الأصغر (H4) */
         h4 {
-            font-size: 1.1rem; /* تصغير طفيف */
-            color: #000000;
-            font-weight: 700;
-            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #343a40; /* لون داكن */
+            font-weight: 600;
         }
 
         /* --- الفقرات والنصوص --- */
         p {
-            font-size: 1rem; /* تصغير طفيف */
-            margin-bottom: 10px; /* تقليل الهامش */
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #343a40;
         }
 
         /* --- القوائم (التعداد النقطي والرقمي) --- */
         ul {
-            list-style-type: none; /* إزالة النمط الافتراضي */
-            padding-right: 15px; /* تقليل المسافة البادئة */
-            margin-bottom: 10px;
+            list-style-type: none;
+            padding-right: 20px;
         }
 
         ul li {
-            font-size: 0.95rem; /* تصغير طفيف */
+            font-size: 1.05rem;
             position: relative;
-            padding-right: 25px; /* تقليل المسافة البادئة */
-            margin-bottom: 8px; /* تقليل المسافة بين العناصر */
+            padding-right: 30px;
+            margin-bottom: 12px;
         }
 
         /* تصميم علامة التعداد النقطي */
@@ -110,92 +120,164 @@
             content: '•';
             position: absolute;
             right: 0;
-            top: 0;
-            font-size: 1.2rem;
-            color: #000000; /* لون أسود */
+            top: 2px;
+            font-size: 1.4rem;
+            color: #007bff;
+        }
+        
+        strong {
+            color: #003366; /* تمييز النصوص المهمة */
         }
 
-        /* تنسيق خاص للقوائم المرقمة (مثل مراحل الإعذار) */
+        /* القائمة المرقمة (مراحل الإعذار) */
         .numbered-list {
+            list-style-type: none;
             padding-right: 0;
             counter-reset: sub-counter;
         }
-
         .numbered-list li {
-            padding-right: 30px; /* تقليل المسافة */
+            padding-right: 40px;
         }
-
         .numbered-list li::before {
             counter-increment: sub-counter;
-            content: counter(sub-counter) ".";
+            content: counter(sub-counter);
             position: absolute;
             right: 0;
-            top: 2px;
-            font-size: 1rem; /* تصغير طفيف */
+            top: 1px;
+            font-size: 1rem;
             font-weight: 700;
-            color: #000000;
-            background-color: #f0f0f0; /* خلفية رمادية فاتحة */
-            width: 22px; /* تصغير الدائرة */
-            height: 22px; /* تصغير الدائرة */
+            color: #ffffff;
+            background-color: #0056b3;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
         }
-
-        /* --- عناصر أخرى --- */
-        hr {
-            display: none; /* إخفاء الخطوط الفاصلة لتوفير المساحة */
+        .numbered-list li strong {
+            display: inline-block;
+            margin-bottom: 5px;
         }
-        
-        /* ملاحظات الصفحات */
+
+        /* --- ملاحظات الصفحات --- */
         .page-ref {
-            font-size: 0.85rem; /* تصغير الخط */
-            color: #333;
+            font-size: 0.9rem;
+            color: #6c757d; /* لون رمادي باهت */
             font-weight: 500;
             display: block;
-            margin-top: -8px; /* تقليل الهامش */
+            margin-top: -10px;
             margin-bottom: 15px;
         }
 
-        /* --- إعدادات خاصة بالطباعة --- */
+        /* --- زر حفظ PDF (للموبايل) --- */
+        .save-pdf-btn {
+            position: fixed; /* ثابت على الشاشة */
+            bottom: 20px;
+            left: 20px;
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Tajawal', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
+            z-index: 1000;
+            transition: background-color 0.2s ease;
+        }
+        .save-pdf-btn:hover {
+            background-color: #003366;
+        }
+
+        /* --- إعدادات الطباعة (لتقليل الصفحات وإخفاء الزر) --- */
         @media print {
             body {
-                font-family: 'Tajawal', sans-serif; /* ضمان استخدام الخط */
-                color: #000;
-                background: #fff;
+                background-color: #ffffff;
+                color: #000000;
+                padding: 0;
+                margin: 0;
+                font-size: 10pt; /* تصغير الخط العام للطباعة */
             }
+
+            /* إخفاء الزر وأي عناصر غير مرغوبة */
+            .save-pdf-btn {
+                display: none !important;
+            }
+
             .container {
-                padding: 10px; /* تقليل الحشو أكثر عند الطباعة */
-                box-shadow: none;
-                border: none;
                 width: 100%;
                 max-width: 100%;
+                margin: 0;
+                padding: 10pt; /* هامش طباعة بسيط جداً */
+                box-shadow: none;
+                border-radius: 0;
             }
+
             .topic-section {
-                border: 1px solid #ccc;
-                padding: 10px;
-                margin-bottom: 15px;
-                page-break-inside: avoid; /* الأهم: محاولة منع كسر المحتوى */
+                padding: 5pt 0;
+                margin: 0;
+                border: none;
             }
-            h2, h3, h4 {
-                color: #000 !important; /* ضمان اللون الأسود */
+
+            .section-divider {
+                display: none; /* إخفاء الخطوط الفاصلة في الطباعة لتوفير مساحة */
             }
-            ul li::before, .numbered-list li::before {
-                color: #000 !important; /* ضمان اللون الأسود */
+
+            h2, h3, h4, p, li {
+                color: #000000 !important; /* ضمان اللون الأسود للنصوص */
+                background: none !important;
+            }
+
+            h2 {
+                font-size: 16pt;
+                border-bottom: 2px solid #000;
+                padding-bottom: 5pt;
+            }
+            h2::before {
+                font-size: 15pt;
+            }
+            h3 {
+                font-size: 14pt;
+                border-right: 3px solid #000;
+            }
+            h4 {
+                font-size: 12pt;
+            }
+            p, li {
+                font-size: 10.5pt;
+                line-height: 1.5; /* تقليل ارتفاع السطر في الطباعة */
+            }
+            ul {
+                padding-right: 15px;
+            }
+            ul li {
+                padding-right: 20px;
+            }
+            ul li::before {
+                color: #000 !important;
+            }
+            .numbered-list li::before {
+                background-color: #ddd !important;
+                color: #000 !important;
             }
             .page-ref {
+                font-size: 8pt;
                 color: #333 !important;
-            }
-            hr {
-                display: none; /* التأكيد على إخفاء الخطوط الفاصلة */
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <button class="save-pdf-btn" onclick="generatePDF()">
+        🖨️ حفظ كـ PDF
+    </button>
+
+    <div class="container" id="content-to-save">
 
         <section class="topic-section">
             <h2>الالتزام الطبيعي وحالاته وآثاره</h2>
@@ -235,6 +317,8 @@
                 <li>هذا التعهد ينشئ التزاماً مدنياً جديداً، يمكن للدائن عندئذ أن يُجبر المدين على تنفيذه.</li>
             </ul>
         </section>
+
+        <hr class="section-divider">
 
         <section class="topic-section">
             <h2>أطراف الوفاء وحالاتهم</h2>
@@ -288,6 +372,8 @@
             </ul>
         </section>
 
+        <hr class="section-divider">
+
         <section class="topic-section">
             <h2>الأسباب الذي ينقضي فيها الوفاء بما يعادل الوفاء)</h2>
             <span class="page-ref">(الصفحات 39-57)</span>
@@ -301,10 +387,12 @@
             </ul>
         </section>
 
+        <hr class="section-divider">
+
         <section class="topic-section">
             <h2>شروط التنفيذ العيني الجبري وكيفية التنفيذ</h2>
             <span class="page-ref">الصفحات (69-75)</span>
-            <p>التفيذ العيني الجبري هو الأصل، ويتم فيه إجبار المدين على تنفيذ ذات الالتزام الذي تعهد به.</p>
+            <p>التنفيذ العيني الجبري هو الأصل، ويتم فيه إجبار المدين على تنفيذ ذات الالتزام الذي تعهد به.</p>
 
             <h3>شروط التنفيذ العيني الجبري</h3>
             <p>لكي يتمكن الدائن من طلب التنفيذ العيني، يجب أن تتوفر الشروط التالية:</p>
@@ -362,6 +450,8 @@
             </ul>
         </section>
 
+        <hr class="section-divider">
+
         <section class="topic-section">
             <h2>الغرامة التهديدية وشروطها</h2>
             <span class="page-ref">الصفحات (64-67)</span>
@@ -398,6 +488,8 @@
                 </li>
             </ul>
         </section>
+
+        <hr class="section-divider">
 
         <section class="topic-section">
             <h2>التنفيذ عن طريق التعويض المفهوم، الأنواع الشروط، وكيفية التقدير</h2>
@@ -446,7 +538,7 @@
                 <li>
                     <strong>1. الاتفاق (الشرط الجزائي):</strong>
                     <ul>
-                        <li>يقوم المتعاقدان بتحديد قيمة التعويض مقدماً في العقد نفسه، ويُسمى الشرط الجزائي.</li>
+                        <li>يقوم المتعقدان بتحديد قيمة التعويض مقدماً في العقد نفسه، ويُسمى الشرط الجزائي.</li>
                         <li><strong>الأثر:</strong> إذا حلّ أجل الالتزام، التزم المدين بدفع المبلغ المتفق عليه في الشرط الجزائي بدلاً من التعويض الذي يقرره القاضي.</li>
                     </ul>
                 </li>
@@ -467,5 +559,35 @@
             </ul>
         </section>
 
-    </div> </body>
+    </div> <script>
+        function generatePDF() {
+            // 1. إظهار رسالة بسيطة للمستخدم (اختياري)
+            const btn = document.querySelector('.save-pdf-btn');
+            btn.innerText = '🔄 جاري التجهيز...';
+
+            // 2. العنصر المراد طباعته
+            const element = document.getElementById('content-to-save');
+
+            // 3. إعدادات مكتبة html2pdf
+            const opt = {
+                margin:       [10, 5, 10, 5], // هوامش [أعلى، يسار، أسفل، يمين] بـ mm
+                filename:     'ملخص_المادة.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true }, // زيادة الدقة
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] } // محاولة منع كسر العناصر
+            };
+
+            // 4. تنفيذ الأمر
+            html2pdf().from(element).set(opt).save().then(function() {
+                // 5. إعادة الزر لوضعه الطبيعي بعد الانتهاء
+                btn.innerText = '🖨️ حفظ كـ PDF';
+            }).catch(function() {
+                // في حال حدوث خطأ
+                btn.innerText = '❌ حدث خطأ';
+            });
+        }
+    </script>
+
+</body>
 </html>
